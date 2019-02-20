@@ -1,15 +1,11 @@
 package com.estudos.Hibernate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 
-import com.estudos.model.Address;
 import com.estudos.model.HibernateSession;
-import com.estudos.model.Options;
 import com.estudos.model.Product;
-import com.estudos.model.User;
 
 /**
  * Hello world!
@@ -20,22 +16,21 @@ public class App {
 	public static void main(String[] args) {
 		Session session = HibernateSession.getSessionFactory().openSession();
 		session.beginTransaction();
+
 		Product product = new Product();
-		
+
 		product.setName("PS4");
 		product.setPrice(10.01);
-		
-		System.out.println(product.getName());
-		session.save(product);
-		
-		
+
+//		session.save(product);
+
+		List<Product> products = session.createQuery("from Product").getResultList();
+
+		Product p1 = session.find(Product.class, 5);
+		System.out.println(p1.getName());
+
 		session.getTransaction().commit();
-		
-		
-		
-		
-		
-		
+
 		
 		
 		
@@ -67,8 +62,6 @@ public class App {
 //		
 //		System.out.println(user.toString());
 //		System.out.println(user.getAddress().getStreet()+" "+ user.getName());
-		
-		
-		
+
 	}
 }
