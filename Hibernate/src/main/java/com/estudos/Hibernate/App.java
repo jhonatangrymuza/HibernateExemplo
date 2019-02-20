@@ -13,23 +13,38 @@ import com.estudos.model.Product;
  */
 public class App {
 
+	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		Session session = HibernateSession.getSessionFactory().openSession();
 		session.beginTransaction();
 
 		Product product = new Product();
 
-		product.setName("PS4");
-		product.setPrice(10.01);
+//		product.setName("PS4");
+//		product.setPrice(10.01);
 
 //		session.save(product);
 
-		List<Product> products = session.createQuery("from Product").getResultList();
-
-		Product p1 = session.find(Product.class, 5);
-		System.out.println(p1.getName());
-
+//		List<Product> products = session.createQuery("from Product").getResultList();
+//
+//		Product p1 = session.find(Product.class, 5);
+//		System.out.println(p1.getName());
+		
+		Product products = session.find(Product.class, 6);
+		
+		if(products != null) {
+			products.setName("editado2");
+			products.setPrice(5.00);
+			session.saveOrUpdate(products);
+			
+		}
+//			else if(products == null) {
+//			product.setName("novo");
+//			product.setPrice(5.00);
+//			session.save(product);
+//		}
 		session.getTransaction().commit();
+		
 
 		
 		
