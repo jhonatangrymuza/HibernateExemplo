@@ -18,31 +18,39 @@ public class App {
 		Session session = HibernateSession.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		Product product = new Product();
-
+//		Salva os dados
+//		Product product = new Product();
 //		product.setName("PS4");
 //		product.setPrice(10.01);
-
 //		session.save(product);
 
-//		List<Product> products = session.createQuery("from Product").getResultList();
-//
+
+//		Busca os dados
 //		Product p1 = session.find(Product.class, 5);
 //		System.out.println(p1.getName());
 		
-		Product products = session.find(Product.class, 6);
+		
+//		Atualiza os dados 
+//		Product products = session.find(Product.class, 6);
+//		
+//		if(products != null) {
+//			products.setName("editado2");
+//			products.setPrice(5.00);
+//			session.saveOrUpdate(products);
+//			
+//		}
+		
+//		Deleta dados
+		
+		Product products = session.find(Product.class, 8);
 		
 		if(products != null) {
-			products.setName("editado2");
-			products.setPrice(5.00);
-			session.saveOrUpdate(products);
-			
+//			Delete or remove is equals			
+//			session.delete(products);
+			session.remove(products);
+		
 		}
-//			else if(products == null) {
-//			product.setName("novo");
-//			product.setPrice(5.00);
-//			session.save(product);
-//		}
+
 		session.getTransaction().commit();
 		
 
