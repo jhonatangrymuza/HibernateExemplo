@@ -23,7 +23,7 @@ public class App {
 		Product product = new Product();
 		
 		product.setName("PS4");
-		product.setPrice(10.05);
+		product.setPrice(10.01);
 		
 		System.out.println(product.getName());
 		session.save(product);
